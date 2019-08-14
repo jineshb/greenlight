@@ -27,8 +27,7 @@ RUN bundle install --without development test --deployment --clean
 COPY . .
 
 # Precompile assets
-RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bundle exec rake assets:clean
-RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE="ASSETS" bundle exec rake assets:precompile
 
 # Expose port 80.
 EXPOSE 80
